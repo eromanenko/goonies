@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>The Goonies Companion</title>
+  <meta name="description" content="Digital companion app for The Goonies board game — replaces paper booklets with multilingual support" />
+  <meta name="theme-color" content="#c9a84c" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Goonies" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="apple-touch-icon" href="icons/icon-192.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Loading screen -->
+  <div id="loading-screen" class="screen active">
+    <div class="loading-content">
+      <div class="skull-icon">☠</div>
+      <div class="loading-title">THE GOONIES</div>
+      <div class="loading-subtitle">Companion App</div>
+      <div class="loading-bar"><div class="loading-bar-fill"></div></div>
+    </div>
+  </div>
+
+  <!-- Main app -->
+  <div id="app" class="hidden">
+
+    <!-- ═══════════════ INPUT SCREEN ═══════════════ -->
+    <div id="input-screen" class="screen active">
+      <div class="app-header">
+        <div class="app-logo">☠ THE GOONIES</div>
+        <div class="lang-switcher">
+          <button class="lang-btn active" data-lang="EN">EN</button>
+          <button class="lang-btn" data-lang="RU">RU</button>
+          <button class="lang-btn" data-lang="UK">UA</button>
+        </div>
+      </div>
+
+      <div class="content-area">
+        <!-- Penalty tracker -->
+        <div class="penalty-card">
+          <div class="penalty-info">
+            <span class="penalty-skull">💀</span>
+            <span class="penalty-label" id="penalty-label">Caught</span>
+          </div>
+          <div class="penalty-controls">
+            <button class="penalty-reset-btn" id="penalty-reset" title="Reset">↺</button>
+            <div class="penalty-score" id="penalty-score">0</div>
+            <button class="penalty-add-btn" id="penalty-add">+</button>
+          </div>
+        </div>
+
+        <!-- Code input -->
+        <div class="code-section">
+          <label class="code-label" id="code-label" for="code-input">Enter Code</label>
+          <div class="code-input-row">
+            <input
+              type="text"
+              id="code-input"
+              class="code-input"
+              placeholder="e.g. 1000"
+              autocomplete="off"
+              autocorrect="off"
+              spellcheck="false"
+              maxlength="10"
+            />
+            <button class="go-btn" id="go-btn">▶</button>
+          </div>
+          <div class="code-error hidden" id="code-error"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════ HERO PREVIEW SCREEN ═══════════════ -->
+    <div id="hero-screen" class="screen hidden">
+      <div class="app-header">
+        <div class="app-logo">☠ THE GOONIES</div>
+        <div class="lang-switcher">
+          <button class="lang-btn active" data-lang="EN">EN</button>
+          <button class="lang-btn" data-lang="RU">RU</button>
+          <button class="lang-btn" data-lang="UK">UA</button>
+        </div>
+      </div>
+
+      <div class="penalty-card mini">
+        <div class="penalty-info">
+          <span class="penalty-skull">💀</span>
+          <span class="penalty-label" id="penalty-label-2">Caught</span>
+        </div>
+        <div class="penalty-controls">
+          <button class="penalty-reset-btn" id="penalty-reset-2" title="Reset">↺</button>
+          <div class="penalty-score" id="penalty-score-2">0</div>
+          <button class="penalty-add-btn" id="penalty-add-2">+</button>
+        </div>
+      </div>
+
+      <div class="hero-preview">
+        <div class="hero-location" id="hero-location">
+          <span class="location-pin">📍</span>
+          <span id="location-name"></span>
+        </div>
+        <div class="hero-photo-wrap">
+          <img class="hero-photo" id="hero-photo" src="" alt="" />
+          <div class="hero-glow"></div>
+        </div>
+        <div class="hero-meta">
+          <div class="hero-name" id="hero-name"></div>
+          <div class="hero-spec" id="hero-spec"></div>
+        </div>
+        <div class="hero-actions">
+          <button class="cancel-btn" id="cancel-btn">✕ <span id="cancel-label">Cancel</span></button>
+          <button class="confirm-btn" id="confirm-btn">✓ <span id="confirm-label">Confirm</span></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════ RESULT SCREEN ═══════════════ -->
+    <div id="result-screen" class="screen hidden">
+      <div class="app-header">
+        <button class="back-btn" id="back-btn">← <span id="back-label">Back</span></button>
+        <div class="lang-switcher">
+          <button class="lang-btn active" data-lang="EN">EN</button>
+          <button class="lang-btn" data-lang="RU">RU</button>
+          <button class="lang-btn" data-lang="UK">UA</button>
+        </div>
+      </div>
+
+      <div class="penalty-card mini">
+        <div class="penalty-info">
+          <span class="penalty-skull">💀</span>
+          <span class="penalty-label" id="penalty-label-3">Caught</span>
+        </div>
+        <div class="penalty-controls">
+          <button class="penalty-reset-btn" id="penalty-reset-3" title="Reset">↺</button>
+          <div class="penalty-score" id="penalty-score-3">0</div>
+          <button class="penalty-add-btn" id="penalty-add-3">+</button>
+        </div>
+      </div>
+
+      <div class="result-content">
+        <div class="result-hero-strip">
+          <img class="result-hero-thumb" id="result-hero-thumb" src="" alt="" />
+          <div class="result-hero-info">
+            <div class="result-hero-name" id="result-hero-name"></div>
+            <div class="result-hero-loc">
+              <span>📍</span>
+              <span id="result-location-name"></span>
+            </div>
+          </div>
+          <div class="result-code-badge" id="result-code-badge"></div>
+        </div>
+
+        <div class="result-text-card">
+          <div class="result-text" id="result-text"></div>
+        </div>
+
+        <div class="result-action-card hidden" id="result-action-card">
+          <div class="action-header">
+            <span class="action-icon">⚡</span>
+            <span class="action-title" id="action-title-label">Action</span>
+          </div>
+          <div class="result-action" id="result-action"></div>
+        </div>
+
+        <div class="result-image-wrap hidden" id="result-image-wrap">
+          <img class="result-image" id="result-image" src="" alt="Code image" />
+          <div class="image-hint" id="image-hint-label">Tap to zoom</div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /app -->
+
+  <!-- ═══════════════ IMAGE MODAL ═══════════════ -->
+  <div id="image-modal" class="modal hidden" role="dialog" aria-modal="true">
+    <button class="modal-close" id="modal-close" aria-label="Close">✕</button>
+    <div class="modal-img-wrap" id="modal-img-wrap">
+      <img class="modal-img" id="modal-img" src="" alt="Full size image" draggable="false" />
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
