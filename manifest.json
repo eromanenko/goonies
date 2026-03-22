@@ -2,7 +2,7 @@
   "name": "The Goonies Companion",
   "short_name": "Goonies",
   "description": "Digital companion app for The Goonies board game",
-  "start_url": "/",
+  "start_url": "./",
   "display": "standalone",
   "background_color": "#0d0f1a",
   "theme_color": "#c9a84c",
