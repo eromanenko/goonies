@@ -38,3 +38,20 @@ loc36,Overlook scale,Смотровая площадка (весы),Оглядо
 loc37,Ecola State Park,Государственный парк Экола,Державний парк Екола
 loc38,The ledge,Уступ,Уступ
 penaltyTrackerName,Caught,Пойманы,Спіймані
+startSpoiler,Set up,В начале игры,На початку гри
+startDescription,"Place the stack of map tiles face down. Also, place the clue card deck face down in numerical order. At the start, you should have the doubloon, the treasure map, and the secret envelopes out (the envelopes must not be opened until the game tells you to do so). To start the adventure, read paragraph 1000 from Mikey’s journal (enter code 1000 and confirm).","Положите стопку тайлов карты лицом вниз. Колоду карт-подсказок также положите лицом вниз по порядку номеров. На старте у вас должны быть открыты дублон, карта сокровищ и секретные конверты (конверты нельзя открывать, пока игра сама не скажет это сделать). Чтобы начать приключение, прочитайте параграф 1000 из журнала Майки (введите код 1000 и подтвердите).","Покладіть стопку тайлів мапи обличчям донизу. Колоду карт-підказок також покладіть обличчям донизу за порядком номерів. На старті у вас мають бути відкриті дублон, карта скарбів та секретні конверти (конверти не можна відкривати, поки гра сама не скаже це зробити). Щоб розпочати пригоду, прочитайте параграф 1000 із журналу Майкі (введіть код 1000 і підтвердьте)."
+finalSpoiler,Show me result!,Какой результат-то?!,І як ми пройшли гру?
+result0,The Goondocks are saved! Goonies never say die,Гундокс спасен! Балбесы никогда не сдаются,Гундокс врятовано! Бовдури ніколи не здаються
+result1,"HEY, YOU GUYS are awesome!","ЭЙ, РЕБЯТА, вы потрясающие!","ГЕЙ, ДРУЗІ, ви неймовірні!"
+result2,At least you got the rich stuff,"По крайней мере, вы заполучили сокровища","Принаймні, ви здобули скарби"
+result4,You watch the Inferno sail off into the sunset with all of the treasure...,"Вы смотрите, как корабль «Инферно» уплывает в закат со всеми сокровищами...","Ви дивитеся, як «Інферно» відпливає в захід сонця з усіма скарбами..."
+result6,The sun is rising over another town,Солнце встает над другим городом,Сонце сходить над іншим містом
+codePlaceholder,e.g. 1000,напр. 1000,напр. 1000
+codeLabel,Enter Code,Введите код,Введіть код
+notFound,Code not found. Check and try again or move the Fratellis forward one space.,Код не найден. Проверьте и попробуйте снова или передвиньте Фрателли вперёд на одну клетку.,Код не знайдено. Перевірте і спробуйте знову або пересуньте Фрателлі вперед на одну клітинку.
+confirm,Confirm,Подтвердить,Підтвердити
+cancel,Cancel,Отмена,Скасувати
+back,Back,Назад,Назад
+action,Action,Действие,Дія
+tapToZoom,Tap to see,Посмотреть,Подивитись
+noLoc,,,

@@ -16,42 +16,13 @@ const state = {
   ready: false,
 };
 
-// Labels per language
-const UI_LABELS = {
-  EN: {
-    codePlaceholder: 'e.g. 1000',
-    codeLabel: 'Enter Code',
-    notFound: 'Code not found. Check and try again.',
-    confirm: 'Confirm',
-    cancel: 'Cancel',
-    back: 'Back',
-    action: 'Action',
-    tapToZoom: 'Tap to zoom',
-    noLoc: '',
-  },
-  RU: {
-    codePlaceholder: 'напр. 1000',
-    codeLabel: 'Введите код',
-    notFound: 'Код не найден. Проверьте и попробуйте снова.',
-    confirm: 'Подтвердить',
-    cancel: 'Отмена',
-    back: 'Назад',
-    action: 'Действие',
-    tapToZoom: 'Нажмите для увеличения',
-    noLoc: '',
-  },
-  UK: {
-    codePlaceholder: 'напр. 1000',
-    codeLabel: 'Введіть код',
-    notFound: 'Код не знайдено. Перевірте і спробуйте знову.',
-    confirm: 'Підтвердити',
-    cancel: 'Скасувати',
-    back: 'Назад',
-    action: 'Дія',
-    tapToZoom: 'Натисніть для збільшення',
-    noLoc: '',
-  },
-};
+// Labels helper using dictionary
+function getDictValue(id) {
+  const row = state.db.dictionary.find(r => r.Id === id);
+  if (!row) return '';
+  const langKey = state.lang === 'UK' ? 'UK' : state.lang;
+  return row[langKey] || row['EN'] || '';
+}
 
 // ======================================================
 // DOM REFS
@@ -198,22 +169,29 @@ function setLang(lang) {
 }
 
 function applyUILabels() {
-  const labels = UI_LABELS[state.lang] || UI_LABELS['EN'];
   const codeInput = $('code-input');
   if (codeInput) {
-    codeInput.placeholder = labels.codePlaceholder;
-    $('code-label').textContent = labels.codeLabel;
+    codeInput.placeholder = getDictValue('codePlaceholder');
+    $('code-label').textContent = getDictValue('codeLabel');
   }
   const confirmLabel = $('confirm-label');
-  if (confirmLabel) confirmLabel.textContent = labels.confirm;
+  if (confirmLabel) confirmLabel.textContent = getDictValue('confirm');
   const cancelLabel = $('cancel-label');
-  if (cancelLabel) cancelLabel.textContent = labels.cancel;
+  if (cancelLabel) cancelLabel.textContent = getDictValue('cancel');
   const backLabel = $('back-label');
-  if (backLabel) backLabel.textContent = labels.back;
+  if (backLabel) backLabel.textContent = getDictValue('back');
   const actionTitle = $('action-title-label');
-  if (actionTitle) actionTitle.textContent = labels.action;
+  if (actionTitle) actionTitle.textContent = getDictValue('action');
   const imageHint = $('image-hint-label');
-  if (imageHint) imageHint.textContent = labels.tapToZoom;
+  if (imageHint) imageHint.textContent = getDictValue('tapToZoom');
+
+  const startSpoilerLabel = $('start-spoiler-label');
+  if (startSpoilerLabel) startSpoilerLabel.textContent = getDictValue('startSpoiler');
+  const startDescription = $('start-description');
+  if (startDescription) startDescription.textContent = getDictValue('startDescription');
+
+  const finalSpoilerLabel = $('final-spoiler-label');
+  if (finalSpoilerLabel) finalSpoilerLabel.textContent = getDictValue('finalSpoiler');
 }
 
 // ======================================================
@@ -250,9 +228,8 @@ function renderHeroPreview(entry, hero) {
   $('hero-name').textContent = getHeroName(hero);
   $('hero-spec').textContent = getHeroSpec(hero);
 
-  const labels = UI_LABELS[state.lang] || UI_LABELS['EN'];
-  $('confirm-label').textContent = labels.confirm;
-  $('cancel-label').textContent = labels.cancel;
+  $('confirm-label').textContent = getDictValue('confirm');
+  $('cancel-label').textContent = getDictValue('cancel');
 }
 
 // ======================================================
@@ -284,10 +261,29 @@ function renderResult(entry, hero) {
   if (action) {
     actionCard.classList.remove('hidden');
     $('result-action').textContent = action;
-    const labels = UI_LABELS[state.lang] || UI_LABELS['EN'];
-    $('action-title-label').textContent = labels.action;
+    $('action-title-label').textContent = getDictValue('action');
   } else {
     actionCard.classList.add('hidden');
+  }
+
+  // Final code logic
+  const finalSpoiler = $('final-spoiler');
+  if (finalSpoiler) {
+    if (entry.IsFinal && entry.IsFinal.trim() !== '') {
+      finalSpoiler.classList.remove('hidden');
+      $('final-spoiler-label').textContent = getDictValue('finalSpoiler');
+      
+      let penaltyKey = 'result0';
+      if (state.penalty === 1) penaltyKey = 'result1';
+      else if (state.penalty >= 2 && state.penalty <= 3) penaltyKey = 'result2';
+      else if (state.penalty >= 4 && state.penalty <= 5) penaltyKey = 'result4';
+      else if (state.penalty >= 6) penaltyKey = 'result6';
+      
+      $('final-description').textContent = getDictValue(penaltyKey);
+    } else {
+      finalSpoiler.classList.add('hidden');
+      finalSpoiler.removeAttribute('open');
+    }
   }
 
   // Image
@@ -299,8 +295,7 @@ function renderResult(entry, hero) {
   if (imageFile) {
     imageWrap.classList.remove('hidden');
     imageEl.src = `images/${imageFile}`;
-    const labels = UI_LABELS[state.lang] || UI_LABELS['EN'];
-    $('image-hint-label').textContent = linkFile ? labels.tapToZoom : '';
+    $('image-hint-label').textContent = linkFile ? getDictValue('tapToZoom') : '';
 
     imageWrap.onclick = linkFile
       ? () => openModal(`images/${linkFile}`)
@@ -438,14 +433,13 @@ function handleCodeSubmit() {
   const codeInput = $('code-input');
   const rawCode = codeInput.value.trim();
   const errorEl = $('code-error');
-  const labels = UI_LABELS[state.lang] || UI_LABELS['EN'];
 
   if (!rawCode) return;
   if (!state.ready) return;
 
   const entry = findCode(rawCode);
   if (!entry) {
-    errorEl.textContent = labels.notFound;
+    errorEl.textContent = getDictValue('notFound');
     errorEl.classList.remove('hidden');
     codeInput.style.borderColor = 'var(--red-light)';
     setTimeout(() => {

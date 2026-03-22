@@ -1,4 +1,5 @@
-const CACHE_NAME = 'goonies-v7';
+const VERSION = '0.9';
+const CACHE_NAME = 'goonies-v' + VERSION;
 const STATIC_ASSETS = [
   '/',
   '/index.html',
@@ -21,6 +22,7 @@ const STATIC_ASSETS = [
   '/images/6000.png',
   '/images/6000big.png',
   '/images/8385.png',
+  '/images/setup.jpg',
   '/icons/icon-192.png',
   '/icons/icon-512.png',
 ];

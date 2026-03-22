@@ -62,11 +62,20 @@
               autocomplete="off"
               autocorrect="off"
               spellcheck="false"
-              maxlength="10"
+              maxlength="5"
+              autocapitalize="characters"
             />
             <button class="go-btn" id="go-btn">▶</button>
           </div>
           <div class="code-error hidden" id="code-error"></div>
+
+          <details class="start-spoiler">
+            <summary class="start-spoiler-btn" id="start-spoiler-label">Set up</summary>
+            <div class="start-spoiler-content">
+              <div id="start-description"></div>
+              <img src="images/setup.jpg" alt="Setup" class="setup-img" />
+            </div>
+          </details>
         </div>
       </div>
     </div>
@@ -149,6 +158,13 @@
           </div>
           <div class="result-action" id="result-action"></div>
         </div>
+
+        <details class="start-spoiler hidden" id="final-spoiler">
+          <summary class="start-spoiler-btn" id="final-spoiler-label"></summary>
+          <div class="start-spoiler-content">
+            <div id="final-description"></div>
+          </div>
+        </details>
 
         <div class="result-image-wrap hidden" id="result-image-wrap">
           <img class="result-image" id="result-image" src="" alt="Code image" />
