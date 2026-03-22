@@ -424,6 +424,7 @@ body {
 
 .code-input {
   flex: 1;
+  min-width: 0;
   background: var(--bg-card);
   border: 2px solid var(--border);
   border-radius: var(--radius-sm);
@@ -916,4 +917,18 @@ body {
 ::-webkit-scrollbar-thumb {
   background: var(--border);
   border-radius: 99px;
+}
+
+@media (max-width: 640px) {
+  #app, #loading-screen {
+    border-left: none;
+    border-right: none;
+    box-shadow: none;
+  }
+  .app-header {
+    padding: 12px 10px;
+  }
+  .code-section {
+    padding: 8px 10px;
+  }
 }
