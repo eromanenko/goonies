@@ -1,22 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
   <title>The Goonies Companion</title>
-  <meta name="description" content="Digital companion app for The Goonies board game — replaces paper booklets with multilingual support" />
+  <meta name="description"
+    content="Digital companion app for The Goonies board game — replaces paper booklets with multilingual support" />
   <meta name="theme-color" content="#c9a84c" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="Goonies" />
   <link rel="manifest" href="manifest.json" />
-  <link rel="apple-touch-icon" href="icons/icon-192.png" />
+  <link rel="icon" type="image/png" href="icons/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="icons/favicon.svg" />
+  <link rel="shortcut icon" href="icons/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
 
   <!-- Loading screen -->
@@ -25,7 +34,9 @@
       <div class="skull-icon">☠</div>
       <div class="loading-title">THE GOONIES</div>
       <div class="loading-subtitle">Companion App</div>
-      <div class="loading-bar"><div class="loading-bar-fill"></div></div>
+      <div class="loading-bar">
+        <div class="loading-bar-fill"></div>
+      </div>
     </div>
   </div>
 
@@ -54,17 +65,8 @@
         <div class="code-section">
           <label class="code-label" id="code-label" for="code-input">Enter Code</label>
           <div class="code-input-row">
-            <input
-              type="text"
-              id="code-input"
-              class="code-input"
-              placeholder="e.g. 1000"
-              autocomplete="off"
-              autocorrect="off"
-              spellcheck="false"
-              maxlength="5"
-              autocapitalize="characters"
-            />
+            <input type="text" id="code-input" class="code-input" placeholder="e.g. 1000" autocomplete="off"
+              autocorrect="off" spellcheck="false" maxlength="5" autocapitalize="characters" />
             <button class="go-btn" id="go-btn">▶</button>
           </div>
           <div class="code-error hidden" id="code-error"></div>
@@ -185,4 +187,5 @@
 
   <script src="app.js"></script>
 </body>
+
 </html>

@@ -1,4 +1,4 @@
-const VERSION = '1.0';
+const VERSION = '1.1';
 const CACHE_NAME = 'goonies-v' + VERSION;
 const STATIC_ASSETS = [
   './',
@@ -23,8 +23,12 @@ const STATIC_ASSETS = [
   './images/6000big.png',
   './images/8385.png',
   './images/setup.jpg',
-  './icons/icon-192.png',
-  './icons/icon-512.png',
+  './icons/web-app-manifest-192x192.png',
+  './icons/web-app-manifest-512x512.png',
+  './icons/favicon-96x96.png',
+  './icons/favicon.svg',
+  './icons/favicon.ico',
+  './icons/apple-touch-icon.png',
 ];
 
 self.addEventListener('install', event => {
