@@ -513,17 +513,19 @@ async function init() {
     // Go button
     $('go-btn').addEventListener('click', handleCodeSubmit);
 
-    // Hero preview — Cancel
-    $('cancel-btn').addEventListener('click', () => {
+    // Helper to return to input screen and clear state
+    const goBackToInput = () => {
       $('code-input').value = '';
       $('code-error').classList.add('hidden');
       state.currentCode = null;
       state.currentEntry = null;
       state.currentHero = null;
       showScreen('input');
-      // refocus input
       setTimeout(() => $('code-input').focus(), 100);
-    });
+    };
+
+    // Hero preview — Cancel
+    $('cancel-btn').addEventListener('click', goBackToInput);
 
     // Hero preview — Confirm
     $('confirm-btn').addEventListener('click', () => {
@@ -533,9 +535,7 @@ async function init() {
     });
 
     // Result screen — Back
-    $('back-btn').addEventListener('click', () => {
-      showScreen('hero');
-    });
+    $('back-btn').addEventListener('click', goBackToInput);
 
     // Image modal
     bindModal();

@@ -1,4 +1,4 @@
-const CACHE_NAME = 'goonies-v4';
+const CACHE_NAME = 'goonies-v7';
 const STATIC_ASSETS = [
   '/',
   '/index.html',

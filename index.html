@@ -35,7 +35,13 @@
     <!-- ═══════════════ INPUT SCREEN ═══════════════ -->
     <div id="input-screen" class="screen active">
       <div class="app-header">
-        <div class="app-logo">☠ THE GOONIES</div>
+        <div class="app-logo">☠ GOONIES</div>
+        <div class="header-penalty">
+          <button class="h-pen-btn reset" id="penalty-reset" title="Reset">↺</button>
+          <div class="h-pen-score" id="penalty-score">0</div>
+          <span class="h-pen-skull">💀</span>
+          <button class="h-pen-btn add" id="penalty-add">+</button>
+        </div>
         <div class="lang-switcher">
           <button class="lang-btn active" data-lang="EN">EN</button>
           <button class="lang-btn" data-lang="RU">RU</button>
@@ -44,19 +50,6 @@
       </div>
 
       <div class="content-area">
-        <!-- Penalty tracker -->
-        <div class="penalty-card">
-          <div class="penalty-info">
-            <span class="penalty-skull">💀</span>
-            <span class="penalty-label" id="penalty-label">Caught</span>
-          </div>
-          <div class="penalty-controls">
-            <button class="penalty-reset-btn" id="penalty-reset" title="Reset">↺</button>
-            <div class="penalty-score" id="penalty-score">0</div>
-            <button class="penalty-add-btn" id="penalty-add">+</button>
-          </div>
-        </div>
-
         <!-- Code input -->
         <div class="code-section">
           <label class="code-label" id="code-label" for="code-input">Enter Code</label>
@@ -81,23 +74,17 @@
     <!-- ═══════════════ HERO PREVIEW SCREEN ═══════════════ -->
     <div id="hero-screen" class="screen hidden">
       <div class="app-header">
-        <div class="app-logo">☠ THE GOONIES</div>
+        <div class="app-logo">☠ GOONIES</div>
+        <div class="header-penalty">
+          <button class="h-pen-btn reset" id="penalty-reset-2" title="Reset">↺</button>
+          <div class="h-pen-score" id="penalty-score-2">0</div>
+          <span class="h-pen-skull">💀</span>
+          <button class="h-pen-btn add" id="penalty-add-2">+</button>
+        </div>
         <div class="lang-switcher">
           <button class="lang-btn active" data-lang="EN">EN</button>
           <button class="lang-btn" data-lang="RU">RU</button>
           <button class="lang-btn" data-lang="UK">UA</button>
-        </div>
-      </div>
-
-      <div class="penalty-card mini">
-        <div class="penalty-info">
-          <span class="penalty-skull">💀</span>
-          <span class="penalty-label" id="penalty-label-2">Caught</span>
-        </div>
-        <div class="penalty-controls">
-          <button class="penalty-reset-btn" id="penalty-reset-2" title="Reset">↺</button>
-          <div class="penalty-score" id="penalty-score-2">0</div>
-          <button class="penalty-add-btn" id="penalty-add-2">+</button>
         </div>
       </div>
 
@@ -125,22 +112,16 @@
     <div id="result-screen" class="screen hidden">
       <div class="app-header">
         <button class="back-btn" id="back-btn">← <span id="back-label">Back</span></button>
+        <div class="header-penalty">
+          <button class="h-pen-btn reset" id="penalty-reset-3" title="Reset">↺</button>
+          <div class="h-pen-score" id="penalty-score-3">0</div>
+          <span class="h-pen-skull">💀</span>
+          <button class="h-pen-btn add" id="penalty-add-3">+</button>
+        </div>
         <div class="lang-switcher">
           <button class="lang-btn active" data-lang="EN">EN</button>
           <button class="lang-btn" data-lang="RU">RU</button>
           <button class="lang-btn" data-lang="UK">UA</button>
-        </div>
-      </div>
-
-      <div class="penalty-card mini">
-        <div class="penalty-info">
-          <span class="penalty-skull">💀</span>
-          <span class="penalty-label" id="penalty-label-3">Caught</span>
-        </div>
-        <div class="penalty-controls">
-          <button class="penalty-reset-btn" id="penalty-reset-3" title="Reset">↺</button>
-          <div class="penalty-score" id="penalty-score-3">0</div>
-          <button class="penalty-add-btn" id="penalty-add-3">+</button>
         </div>
       </div>
 
