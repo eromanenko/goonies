@@ -38,6 +38,17 @@ Get-ChildItem "$PWD\..\images" -File | ForEach-Object {
     $storage[$key] = "data:$mime;base64,$b64"
 }
 
+# Inline Sounds
+Get-ChildItem "$PWD\..\sounds" -File | ForEach-Object {
+    $key = "sounds/" + $_.Name
+    $ext = $_.Extension.ToLower()
+    $mime = "audio/mpeg"
+    if ($ext -eq ".wav") { $mime = "audio/wav" }
+    
+    $b64 = Get-B64 $_.FullName
+    $storage[$key] = "data:$mime;base64,$b64"
+}
+
 # Convert Storage to JSON
 $storageJson = $storage | ConvertTo-Json -Compress
 
@@ -60,11 +71,15 @@ $portableLoader = @"
   // --- INTERCEPT FETCH ---
   const originalFetch = window.fetch;
   window.fetch = async (url) => {
-    // Normalize URL
-    const cleanUrl = url.replace('./', '');
-    if (window.GOONIES_STORAGE[cleanUrl]) {
-      const data = window.GOONIES_STORAGE[cleanUrl];
-      // If it's a data URI (image), return as blob if needed, otherwise text
+    // Extract key (e.g. 'db/codes.csv' or 'sounds/success.mp3') from URL
+    const parts = url.split('/');
+    const fileName = parts[parts.length - 1];
+    const folder = parts[parts.length - 2] || '';
+    const key = (folder && ['db', 'images', 'sounds'].includes(folder)) ? (folder + '/' + fileName) : fileName;
+
+    if (window.GOONIES_STORAGE[key]) {
+      const data = window.GOONIES_STORAGE[key];
+      // If it's a data URI (image/audio), return as blob if needed, otherwise text
       return {
         ok: true,
         text: () => Promise.resolve(decodeB64(data)),
@@ -75,59 +90,89 @@ $portableLoader = @"
   };
 
   // --- INTERCEPT IMAGE SRC ---
+  // --- INTERCEPT IMAGE SRC ---
   const originalSrcDesc = Object.getOwnPropertyDescriptor(HTMLImageElement.prototype, 'src');
-  Object.defineProperty(HTMLImageElement.prototype, 'src', {
-    set: function(val) {
-      if (typeof val === 'string') {
-          // Normalize the path for matching
-          const parts = val.split('/');
-          const fileName = parts[parts.length - 1];
-          const folder = parts[parts.length - 2] || '';
-          const lookup = folder ? (folder + '/' + fileName) : fileName;
-          
-          // Check various forms
-          const key = window.GOONIES_STORAGE[val] ? val : 
-                      window.GOONIES_STORAGE['images/' + fileName] ? 'images/' + fileName : null;
-          
-          if (key && window.GOONIES_STORAGE[key].startsWith('data:')) {
-            val = window.GOONIES_STORAGE[key];
-          }
+  if (originalSrcDesc && originalSrcDesc.set) {
+    Object.defineProperty(HTMLImageElement.prototype, 'src', {
+      set: function(val) {
+        if (typeof val === 'string' && !val.startsWith('data:')) {
+            const fileName = val.split('/').pop();
+            const key = 'images/' + fileName;
+            if (window.GOONIES_STORAGE[key]) {
+               val = window.GOONIES_STORAGE[key];
+            }
+        }
+        originalSrcDesc.set.call(this, val);
+      },
+      get: function() { return originalSrcDesc.get.call(this); }
+    });
+  }
+
+  // --- INTERCEPT AUDIO ---
+  // 1. Patch the constructor
+  const OriginalAudio = window.Audio;
+  const originalAudioSrcDesc = Object.getOwnPropertyDescriptor(HTMLAudioElement.prototype, 'src') || 
+                               Object.getOwnPropertyDescriptor(HTMLMediaElement.prototype, 'src');
+  
+  if (originalAudioSrcDesc && originalAudioSrcDesc.set) {
+    window.Audio = function(src) {
+      const instance = new OriginalAudio();
+      if (src) {
+         instance.src = src; 
       }
-      originalSrcDesc.set.call(this, val);
-    },
-    get: function() {
-        return originalSrcDesc.get.call(this);
-    }
-  });
+      return instance;
+    };
+    window.Audio.prototype = OriginalAudio.prototype;
+
+    // 2. Patch the setter on the prototype
+    Object.defineProperty(HTMLAudioElement.prototype, 'src', {
+      set: function(val) {
+        if (typeof val === 'string' && !val.startsWith('data:')) {
+            const fileName = val.split('/').pop();
+            const key = 'sounds/' + fileName;
+            if (window.GOONIES_STORAGE[key]) {
+              val = window.GOONIES_STORAGE[key];
+            }
+        }
+        originalAudioSrcDesc.set.call(this, val);
+      },
+      get: function() { return originalAudioSrcDesc.get.call(this); }
+    });
+  }
 </script>
 "@
 
 # --- 4. Assemble HTML ---
 Write-Host "Assembling goonies-escape.html..." -ForegroundColor Cyan
 
-# Remove PWA stuff
+# Remove original scripts and PWA stuff
+$html = $html.Replace('<script src="app.js"></script>', '')
+$html = $html.Replace('<script src="sw.js"></script>', '')
 $html = $html.Replace('<link rel="manifest" href="manifest.json" />', '')
-# Use regex for apple-touch-icon as it might vary
-$html = [regex]::Replace($html, '<link rel="apple-touch-icon" .*? />', '')
+# Remove ALL icon/favicon related links
+$html = [regex]::Replace($html, '<link rel="(icon|shortcut icon|apple-touch-icon)" .*? />', '')
 
 # Inline CSS
 $targetCss = '<link rel="stylesheet" href="style.css" />'
 $html = $html.Replace($targetCss, "<style>`n$css`n</style>")
 
-# Inline PapaParse (matching the CDN version now in index.html)
+# Inline PapaParse
 $targetPapa = '<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>'
 if ($html.Contains($targetPapa)) {
     $html = $html.Replace($targetPapa, "<script>`n$papaJs`n</script>")
-} else {
-    # Fallback for local path if user changed it
-    $targetPapaLocal = '<script src="lib/papaparse.min.js"></script>'
-    $html = $html.Replace($targetPapaLocal, "<script>`n$papaJs`n</script>")
 }
 
-# Inject Portable Loader and app.js
-$targetApp = '<script src="app.js"></script>'
-$scripts = $portableLoader + "`n<script>`n" + $appJs + "`n</script>"
-$html = $html.Replace($targetApp, $scripts)
+# Inject Meta, Portable Loader, and app.js at the end of body
+# We do it this way to ensure it's ALWAYS found and applied before app logic
+$inlinedScripts = @"
+$portableLoader
+<script>
+// --- INLINED APP LOGIC ---
+$appJs
+</script>
+"@
+
+$html = $html.Replace('</body>', "$inlinedScripts`n</body>")
 
 # Fix image references in the static HTML (e.g. setup image)
 foreach ($key in $storage.Keys) {

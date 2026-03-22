@@ -1,4 +1,4 @@
-const VERSION = '1.1';
+const VERSION = '1.2';
 const CACHE_NAME = 'goonies-v' + VERSION;
 const STATIC_ASSETS = [
   './',
@@ -6,6 +6,9 @@ const STATIC_ASSETS = [
   './style.css',
   './app.js',
   './manifest.json',
+  'https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js',
+  './sounds/fail.mp3',
+  './sounds/success.mp3',
   './db/codes.csv',
   './db/heros.csv',
   './db/dictionary.csv',

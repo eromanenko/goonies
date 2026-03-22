@@ -37,6 +37,14 @@ const screens = {
 };
 
 // ======================================================
+// AUDIO
+// ======================================================
+function playSound(name) {
+  const audio = new Audio(`sounds/${name}.mp3`);
+  audio.play().catch(err => console.warn('Audio play blocked or failed:', err));
+}
+
+// ======================================================
 // CSV LOADING
 // ======================================================
 // Load CSV using Fetch and PapaParse
@@ -440,16 +448,18 @@ function handleCodeSubmit() {
 
   const entry = findCode(rawCode);
   if (!entry) {
+    playSound('fail');
     errorEl.textContent = getDictValue('notFound');
     errorEl.classList.remove('hidden');
     codeInput.style.borderColor = 'var(--red-light)';
     setTimeout(() => {
       errorEl.classList.add('hidden');
       codeInput.style.borderColor = '';
-    }, 3000);
+    }, 6000);
     return;
   }
 
+  playSound('success');
   errorEl.classList.add('hidden');
   codeInput.style.borderColor = '';
 
