@@ -39,11 +39,12 @@ const screens = {
 // ======================================================
 // CSV LOADING
 // ======================================================
+// Load CSV using Fetch and PapaParse
 async function loadCSV(path) {
   const response = await fetch(path);
-  const text = await response.text();
+  const csvData = await response.text();
   return new Promise(resolve => {
-    Papa.parse(text, {
+    Papa.parse(csvData, {
       header: true,
       skipEmptyLines: true,
       complete: results => resolve(results.data),
