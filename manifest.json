@@ -2,7 +2,7 @@
   "name": "The Goonies Companion",
   "short_name": "Goonies",
   "description": "Digital companion app for The Goonies board game",
-  "start_url": "./",
+  "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#0d0f1a",
   "theme_color": "#c9a84c",
@@ -12,13 +12,13 @@
       "src": "icons/web-app-manifest-192x192.png",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "maskable"
+      "purpose": "any maskable"
     },
     {
       "src": "icons/web-app-manifest-512x512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "maskable"
+      "purpose": "any maskable"
     }
   ]
 }
