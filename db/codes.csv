@@ -1,4 +1,4 @@
-Code,HeroId,LocId,Text,Action,Text RU,Action RU,Text UK,Action UK,Image,Link,IsFinal
+﻿Code,HeroId,LocId,Text,Action,Text RU,Action RU,Text UK,Action UK,Image,Link,IsFinal
 1000,hero1,loc01,"Mikey Walsh is up in his attic with his older brother Brand and his three best friends: Chunk, Mouth, and Data. They're desperately looking for something - anything - that they can use to stop the purchase of their homes by Mr. Perkins and the Country Club. Chunk clumsily drops an old picture frame that Mikey's dad, the curator of the local museum, had stored up there. Mikey sweeps off the broken glass and pulls something out of the frame. It's an ancient piece of parchment. It looks like a map and there's a well-worn Spanish doubloon hidden behind it! With his friends huddled around the map, Mikey points to some Spanish text and asks Mouth to translate.
 ""Ye intruders beware. Crushing death and grief, soaked with blood, of the trespassing thief,"" he says, reciting the words in an ominous tone. Everyone looks at each other wide-eyed except for Brand, who brings the gang crashing back down to reality.
 ""You guys, this map is old news,"" he scoffs.
@@ -1090,21 +1090,21 @@ Reveal cards 40, 41, and 42.","«Дай мне этот нож», — говор
 ""Let's get outta here!""
 Brand urges as he grabs Andy's hand and pulls her to safety across the drawbridge.","Put the bone organ card and drawbridge pieces back in the Cannon Beach Dunes envelope. 
 Discard cards 12 and 35. 
-Move Andy and Brand to the slides (map O). 
+Move Andy and Brand to the slides (map Q). 
 Read entry 3999. 
 Move the Fratellis forward two spaces.","«Брэнд, подожди!» — кричит Энди, поворачиваясь, чтобы вернуться в зал.
 «Что?» — кричит Брэнд, беспокоясь, что Энди не успеет перебраться по мосту вовремя.
 «Что ты делаешь?» «Карта сокровищ!» — кричит она ему, хватая ее оттуда, где она была оставлена на костяном органе.
 «Уходим отсюда!» — подгоняет Брэнд, хватая Энди за руку и перетаскивая ее в безопасное место через подъемный мост.","Положите карту костяного органа и детали подъемного моста обратно в конверт Дюны Кэннон-Бич. 
 Сбросьте карты 12 и 35. 
-Переместите Энди и Брэнда на горки (карта O). 
+Переместите Энди и Брэнда на горки (карта Q). 
 Прочитайте запись 3999. 
 Передвиньте Фрателли на две клетки вперед.","«Бренде, зачекай!» — кричить Енді, повертаючись, щоб повернутися в зал.
 «Що?» — кричить Бренд, турбуючись, що Енді не встигне перебратися по мосту вчасно.
 «Що ти робиш?» «Карта скарбів!» — кричить вона йому, хапаючи її звідти, де вона була залишена на кістяному органі.
 «Йдемо звідси!» — підганяє Бренд, хапаючи Енді за руку і перетягуючи її в безпечне місце через підйомний міст.","Покладіть карту кістяного органа та деталі підйомного мосту назад у конверт Дюни Кеннон-Біч. 
 Скиньте картки 12 і 35. 
-Перемістіть Енді та Бренда на гірки (мапа O). 
+Перемістіть Енді та Бренда на гірки (мапа Q). 
 Прочитайте запис 3999. 
 Пересуньте Фрателлі на дві клітинки вперед.",,,
 4888,hero4,loc09,"Despite Captain Chunk and Sloth's intervention, the gang all end up in the water while the devious Fratellis double back and clamber onto the Inferno. Andy struggles to keep her head above water with her wrists tied.
@@ -1367,9 +1367,9 @@ Andy replies, indignantly.",,"«Дневник? Это здесь мы узна�
 «Может быть, мне тоже стоит обвязать свой дневник кожаным ремешком, чтобы кое-кто не читал его, пока я в ванной!» — с негодованием отвечает Энди.",,"«Щоденник? Це тут ми дізнаємося, у кого був закоханий Честер? Чи це тільки Енді пише такі соплі у своєму щоденнику?» — жартує Стеф.
 «Можливо, мені теж варто обв'язати свій щоденник шкіряним ремінцем, щоб дехто не читав його, поки я у ванній!» — з обуренням відповідає Енді.",,,,
 5643,hero5,loc05,"""Uh, I think we should, like, just get outta here,""
-Stef says as she makes her way to the drawbridge.","Move Mikey, Mouth, Data, and Stef to the slides (map O). 
-Read entry 4666.","«Э-э, думаю, нам стоит, типа, просто убраться отсюда», — говорит Стеф, пробираясь к подъемному мосту.","Переместите Майки, Маута, Дату и Стеф на горки (карта O). 
-Прочитайте запись 4666.","«Е-е, думаю, нам варто, типу, просто забратися звідси», — каже Стеф, пробираючись до підйомного мосту.","Перемістіть Майкі, Маута, Дату і Стеф на гірки (мапа O). 
+Stef says as she makes her way to the drawbridge.","Move Mikey, Mouth, Data, and Stef to the slides (map Q). 
+Read entry 4666.","«Э-э, думаю, нам стоит, типа, просто убраться отсюда», — говорит Стеф, пробираясь к подъемному мосту.","Переместите Майки, Маута, Дату и Стеф на горки (карта Q). 
+Прочитайте запись 4666.","«Е-е, думаю, нам варто, типу, просто забратися звідси», — каже Стеф, пробираючись до підйомного мосту.","Перемістіть Майкі, Маута, Дату і Стеф на гірки (мапа Q). 
 Прочитайте запис 4666.",,,
 5650,hero5,loc26,"The line must be drawn from the starting arrow in the top left and exit out the right side, without lifting your pen. The numbers along the top and left side indicate how many times in the column or row a line appears.",,"Линия должна быть проведена от стартовой стрелки в левом верхнем углу и выйти с правой стороны, не отрывая ручку от бумаги. Цифры сверху и слева указывают, сколько раз линия появляется в столбце или строке.",,"Лінія має бути проведена від стартової стрілки в лівому верхньому кутку і вийти з правого боку, не відриваючи ручку від паперу. Цифри зверху і зліва вказують, скільки разів лінія з'являється у стовпці або рядку.",,,,
 5653,hero5,loc18,"""No, not there, silly,"" says Stef, pointing at Mouth's sketch.
@@ -1488,20 +1488,20 @@ His eye glued to the lens, Chunk swivels the telescope around.
 ""If they can get off that platform safely, they're gonna run right into those waterslides but... oh no! There's spike pits at the end of all of the waterslides! Sloth, we gotta warn them!""
 Chunk leans over the edge and shouts, ""Hey, you guys!"" at the top of his lungs. The din of the rushing water drowns out his voice as Chunk helplessly watches his friends move even closer to their demise.
 ""Sloth, we gotta do something quick! We can't let them end up dead! Their parents will kill me!""","Attach card 19 (map Q) to the right of the bone organ (map F). 
-Align the exit from map F to the entrance on map O. 
-Place card 43 (map R) below map O, aligning the letter A on map O to I on map R.","Чанк замечает телескоп, установленный на опасном уступе. Любопытство берет верх, и он пробирается туда, чтобы посмотреть в него. Осматривая пещеры, он вдруг видит вспышку движения внизу.
+Align the exit from map F to the entrance on map Q. 
+Place card 43 (map R) below map Q, aligning the letter a on map Q to i on map R.","Чанк замечает телескоп, установленный на опасном уступе. Любопытство берет верх, и он пробирается туда, чтобы посмотреть в него. Осматривая пещеры, он вдруг видит вспышку движения внизу.
 «Слоут! Это мои друзья! Они застряли на какой-то платформе и возятся с каким-то музыкальным инструментом, сделанным из костей! О боже! Может быть, это и был тот шум, который ты слышал раньше». Прильнув глазом к объективу, Чанк поворачивает телескоп.
 «Посмотри на это, Слоут», - продолжает он.
 «Если они смогут безопасно спуститься с этой платформы, они побегут прямо к тем водным горкам, но... о нет! В конце всех водных горок ямы с колььями! Слоут, мы должны их предупредить!»
 Чанк перевешивается через край и кричит: «Эй, ребята!» во все горло. Шум несущейся воды заглушает его голос, и Чанк беспомощно наблюдает, как его друзья приближаются к своей гибели.
-«Слоут, мы должны что-то сделать, и быстро! Мы не можем позволить им погибнуть! Их родители меня убьют!»","Прикрепите карту 19 (карта Q) справа от костяного органа (карта F). Совместите выход с карты F со входом на карту O. 
-Положите карту 43 (карта R) под карту O, совместив букву A на карте O с буквой I на карте R.","Чанк помічає телескоп, встановлений на небезпечному уступі. Цікавість бере гору, і він пробирається туди, щоб подивитися в нього. Оглядаючи печери, він раптом бачить спалах руху внизу.
+«Слоут, мы должны что-то сделать, и быстро! Мы не можем позволить им погибнуть! Их родители меня убьют!»","Прикрепите карту 19 (карта Q) справа от костяного органа (карта F). Совместите выход с карты F со входом на карту Q. 
+Положите карту 43 (карта R) под карту Q, совместив букву a на карте Q с буквой i на карте R.","Чанк помічає телескоп, встановлений на небезпечному уступі. Цікавість бере гору, і він пробирається туди, щоб подивитися в нього. Оглядаючи печери, він раптом бачить спалах руху внизу.
 «Слоут! Це мої друзі! Вони застрягли на якійсь платформі і возяться з якимось музичним інструментом, зробленим з кісток! О боже! Можливо, це і був той шум, який ти чув раніше». Припавши оком до об'єктива, Чанк повертає телескоп.
 «Подивись на це, Слоут», - продовжує він.
 «Якщо вони зможуть безпечно спуститися з цієї платформи, вони побіжать прямо до тих водних гірок, але... о ні! Наприкінці всіх водних гірок ями з кілками! Слоут, ми повинні їх попередити!»
 Чанк переважується через край і кричить: «Гей, хлопці!» на все горло. Шум води, що мчить, заглушає його голос, і Чанк безпорадно спостерігає, як його друзі наближаються до своєї загибелі.
-«Слоут, ми повинні щось зробити, і швидко! Ми не можемо дозволити їм загинути! Їхні батьки мене вб'ють!»","Прикріпіть карту 19 (мапа Q) праворуч від кістяного органу (мапа F). Сумістіть вихід з мапи F із входом на мапу O. 
-Покладіть карту 43 (мапа R) під мапу O, сумістивши літеру A на мапі O з літерою I на мапі R.",,,
+«Слоут, ми повинні щось зробити, і швидко! Ми не можемо дозволити їм загинути! Їхні батьки мене вб'ють!»","Прикріпіть карту 19 (мапа Q) праворуч від кістяного органу (мапа F). Сумістіть вихід з мапи F із входом на мапу Q. 
+Покладіть карту 43 (мапа R) під мапу Q, сумістивши літеру a на мапі Q з літерою i на мапі R.",,,
 6215,hero6,loc30,"Chunk looks at the rickety old ladder.
 ""You wait up top while I go down first. I don't want you to fall and hurt yourself if this ladder can't take the weight, big guy! Wait here,"" orders Chunk as he begins his descent into the unknown. Chunk shimmies down the ladder, testing it for its strength.
 ""Ok, you come down now, Sloth,"" he calls up to his friend.
